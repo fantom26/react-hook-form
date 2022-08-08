@@ -1,0 +1,12 @@
+.get {
+  padding-top: 14rem;
+
+  .button {
+    margin: 0 auto;
+  }
+
+  &__error {
+    margin-top: 2rem;
+    color: #e53f3f;
+  }
+}

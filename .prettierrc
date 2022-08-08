@@ -1,0 +1,34 @@
+{
+  "trailingComma": "none",
+  "singleQuote": false,
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "importOrder": [
+    "^react$",
+
+    "<THIRD_PARTY_MODULES>",
+
+    "^pages(/.*$(?<!\\.scss))?$",
+
+    "^layout(/.*$(?<!\\.scss))?$",
+
+    "^routes(/.*)?$",
+
+    "^components(/.*$(?<!\\.scss))?$",
+
+    "^store(/.*)?$",
+
+    "^hooks(/.*)?$",
+
+    "^utils(/.*)?$",
+
+    "^services(/.*)?$",
+
+    "^assets(/.*)?$",
+
+    "^..(/.*$(?<!\\.scss))?$",
+    "^.(/.*$(?<!\\.scss))?$",
+
+    "(.scss)$"
+  ]
+}

@@ -1,0 +1,28 @@
+@import "./scss/settings/functions";
+@import "./scss/settings/fonts";
+@import "./scss/settings/normalize";
+@import "./scss/variables";
+
+body {
+  font-weight: 400;
+  font-size: 1.6rem;
+  background-color: var(--clr-bg);
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 100%;
+  min-width: 36rem;
+  min-height: 100%;
+}
+
+main {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+}
+
+// <ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>===========================
+@import "./scss/components/ui.scss";

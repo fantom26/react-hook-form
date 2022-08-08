@@ -1,0 +1,30 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 8rem;
+  padding-right: 2rem;
+  padding-left: 2rem;
+  min-width: 10rem;
+  min-height: 3.4rem;
+  font-weight: 400;
+  font-size: 1.6rem;
+  color: var(--clr-default-900);
+  background-color: var(--clr-primary);
+  transition: background-color var(--transition);
+
+  @media (hover) {
+    &:hover {
+      background-color: #ffe302;
+      transition: background-color var(--transition);
+    }
+  }
+
+  &:disabled,
+  &[disabled] {
+    color: var(--clr-default-200);
+    background-color: #b4b4b4;
+    cursor: not-allowed;
+  }
+}

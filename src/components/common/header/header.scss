@@ -1,0 +1,20 @@
+.header {
+  padding-top: 1.3rem;
+  padding-bottom: 1.3rem;
+  background-color: var(--clr-default-100);
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+
+    .button + .button {
+      margin-left: 1rem;
+    }
+  }
+}
