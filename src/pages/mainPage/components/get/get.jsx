@@ -6,6 +6,7 @@ import { useFetching } from "hooks";
 
 import { UsersService } from "services";
 
+import { sortByField } from "utils/helpers";
 import { Users } from "./components/users/users";
 
 import "./get.scss";
@@ -15,8 +16,6 @@ export const Get = () => {
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(null);
   const limit = 6;
-
-  const sortByField = (field) => (a, b) => a[field] > b[field] ? 1 : -1;
 
   const [fetchUsers, isUsersLoading, usersError] = useFetching(async () => {
     const response = await UsersService.getUsers(page, limit);

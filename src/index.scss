@@ -24,5 +24,5 @@ main {
   flex-direction: column;
 }
 
-// <ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>===========================
 @import "./scss/components/ui.scss";
+@import "./scss/libs/toastify.scss";

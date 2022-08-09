@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const API_URL = "https://frontend-test-assignment-api.abz.agency/api/v1";
+const { REACT_APP_BASE_URL } = process.env;
 
 export const $api = axios.create({
   withCredentials: false,
-  baseURL: API_URL
+  baseURL: REACT_APP_BASE_URL
 });

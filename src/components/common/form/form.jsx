@@ -1,41 +1,22 @@
-import { useEffect } from "react";
-
 import { FormProvider, useForm } from "react-hook-form";
-
-import { UsersService } from "services";
 
 import { Input } from "./input/input";
 import { RadioGroup } from "./radio/radio";
 
 import "./form.scss";
+import { useEffect } from "react";
 
-export const Form = ({ onError, className, children }) => {
+export const Form = ({ submit, onError, className, children }) => {
   const methods = useForm({
-    mode: "all"
+    mode: "onChange",
+    defaultValues: { email: "", name: "", phone: "", photo: null, position_id: null }
   });
 
-  const submit = async (data) => {
-    console.log("methods", methods);
 
-    const reader = new FileReader();
-    reader.readAsDataURL(data.photo[0]);
+  useEffect(() => {
+    console.log("methods", methods.formState.dirtyFields);
 
-    const promise = new Promise((resolve, reject) => {
-      reader.onload = (e) => {
-        resolve(e.target.result);
-      };
-      reader.onerror = reject;
-    });
-    data.photo = await promise;
-
-    const token = await UsersService.getToken();
-    const response = await UsersService.addUser(
-      JSON.parse(JSON.stringify(data)),
-      token.data.token
-    );
-
-    methods.reset();
-  };
+  }, [methods.getValues])
 
   return (
     <FormProvider {...methods}>
