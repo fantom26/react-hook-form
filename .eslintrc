@@ -33,7 +33,8 @@
     "setTimeout": "writable",
     "Set": "writable",
     "Promise": "writable",
-    "FileReader": "writable"
+    "FileReader": "writable",
+    "FileList": "writable"
   },
   "plugins": ["react", "react-hooks", "import"],
   "settings": {

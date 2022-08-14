@@ -19,8 +19,15 @@ import { useFetching } from "hooks";
 import { UsersService } from "services";
 
 import "./post.scss";
+import { useForm } from "react-hook-form";
 
 export const Post = () => {
+  const methods = useForm({
+    mode: "onBlur"
+    // eslint-disable-next-line camelcase
+    // defaultValues: { email: "", name: "", phone: "", photo: FileList, position_id: null }
+  });
+
   const [positions, setPositions] = useState([]);
   const fileNameEl = useRef(null);
   const [imageFile, setImageFile] = useState(null);
@@ -39,6 +46,8 @@ export const Post = () => {
     fileNameEl.current.classList.add("changed");
   };
 
+  console.log(methods);
+
   const submitHandler = async (data) => {
     const formData = new FormData();
     for (const key in data) {
@@ -47,8 +56,10 @@ export const Post = () => {
     formData.set("photo", imageFile);
     try {
       const token = await UsersService.getToken();
+      // eslint-disable-next-line no-unused-vars
       const response = await UsersService.addUser(formData, token.data.token);
 
+      methods.reset({ email: "", name: "", phone: "", photo: FileList, position_id: null });
     } catch (error) {
       toast.error(`${error.response.data.message}`, {
         position: "top-right",
@@ -69,7 +80,7 @@ export const Post = () => {
     <section className="post" id="sign">
       <Container>
         <Heading align="center">Working with POST request</Heading>
-        <Form className="form" submit={submitHandler}>
+        <Form className="form" methods={methods} submit={submitHandler}>
           <Input name="name" rules={nameRules} placeholder="Your name" />
           <Input
             type="email"
@@ -95,7 +106,7 @@ export const Post = () => {
             accept=".jpg, .jpeg"
             nameRef={fileNameEl}
           />
-          <Button>Sign up</Button>
+          <Button disabled={!methods.formState.isValid}>Sign up</Button>
         </Form>
       </Container>
     </section>
